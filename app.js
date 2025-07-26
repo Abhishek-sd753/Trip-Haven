@@ -59,10 +59,6 @@ async function main() {
     
 }
 
-app.get("/", (req,res) => {
-    res.send("Working");
-})
-
 
 app.use((req,res,next)=> { //middleware for flash
     res.locals.success = req.flash('success');
