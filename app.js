@@ -67,10 +67,15 @@ app.use((req,res,next)=> { //middleware for flash
     next();
 })
 
+app.get("/", (req, res) => {
+  res.redirect("/listings");
+});
 //routes
 app.use("/listings", listingRouter);    
 app.use("/listings/:id/reviews/", reviewRouter);
 app.use("/", userRouter);
+
+
 
 
 app.use((err, req, res, next) => {
