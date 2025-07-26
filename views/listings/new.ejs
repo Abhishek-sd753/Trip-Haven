@@ -1,0 +1,46 @@
+<!--<body>-->
+<% layout('layouts/boilerplate') -%>
+<body>
+    <div class="listing-container mb-3 row" >
+        <div class="listing-card col-8 offset-2">
+            <br>
+        
+            <h2>Create a new Listing</h2>
+            <form action="/listings" method="POST" novalidate class="needs-validation">
+                <div class="form-group mb-3">
+                    <label for="title">Title:</label>
+                    <input type="text" class="form-control" id="title" name="listing[title]" required>
+                    <div class="invalid-feedback">Please enter a valid title</div>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="description ">Description:</label>
+                    <textarea class="form-control" id="description" name="listing[description]" rows="3" required></textarea>
+                    <div class="invalid-feedback">Please enter a valid description</div>
+                </div>
+                <div class="form-group mb-3">
+                     <label for="country">Country:</label>
+                     <input placeholder="Enter country" type="text" class="form-control" id="country" name="listing[country]" required>
+                <div class="invalid-feedback">Please enter a valid country</div>
+                </div>
+                <div class=" row mb-3">
+                    <div class="form-group mb-3 col-md-8">
+                        <label for="location">Location:</label>
+                        <input placeholder="location" type="text" class="form-control" id="location" name="listing[location]" required>
+                        <div class="invalid-feedback">Please enter a valid location</div>
+                    </div>
+                    <div class="form-group mb-3 col-md-4">
+                    <label for="price">Price:</label>
+                    <input placeholder="Rs" type="number" class="form-control" id="price" name="listing[price]" required>
+                    <div class="invalid-feedback">Please enter a valid price</div>
+                    </div>
+                </div>
+                   <div class="form-group mb-3 ">
+                     <label for="image-url">Image:</label>
+                    <input type="text" class="form-control-file" id="image-url" name="listing[image]">
+                </div>
+                <button type="submit" class="btn btn-primary submit-btn">Submit</button>
+                <a href="/listings" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+</body>

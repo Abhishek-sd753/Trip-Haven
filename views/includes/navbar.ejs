@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light border-bottom sticky-top">
+  <a class="navbar-brand" href="/listings" style="margin-left: 12px;"><i class="fa-solid fa-hotel"></i></a>
+   
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" href="/listings">Explore</a>
+    
+  </div>
+  <div class="navbar-nav ms-auto">
+      <a class="nav-item nav-link" href="/listings/new">New</a> 
+    <% if(!currUser) {%>
+      <a class="nav-item nav-link active" href="/signup">Sign Up </a>
+      <a class="nav-item nav-link" href="/login">Login</a>
+      <% } %>
+        <% if(currUser) {%>
+           <a class="nav-item nav-link" href="/logout">Log Out</a>
+          <% } %>
+     
+  </div>
+
+    
+</nav>  
