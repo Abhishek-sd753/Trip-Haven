@@ -2,7 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const app = express();
-const dbURL = 'mongodb://127.0.0.1:27017/wanderlust';
 const methodOverride = require('method-override');
 const ejsMate = require('ejs-mate');
 const session = require('express-session');
@@ -15,7 +14,7 @@ const reviewRouter = require('./routes/review.js');
 const userRouter = require('./routes/user.js');
 require('dotenv').config();
 
-const dbUrl = process.env.ATLASDB_URL || 'mongodb://127.0.0.1:27017/wanderlust';
+const dbUrl = process.env.ATLASDB_URL;
 
 app.set('view engine', 'ejs');  
 app.use(express.static(path.join(__dirname, 'public'))); 
@@ -24,8 +23,18 @@ app.use(express.urlencoded({extended: true}));
 app.use(methodOverride('_method'));  
 app.use(express.static(path.join(__dirname,"/public"))); 
 
+const store = MongoStore.create({
+    mongoUrl : dbURL,
+    crypto : {
+        secret : process.env.SECRET,
+    },
+    touchAfter: 24*3600,
+
+})
+
 const sessionOptions = {
-    secret: "mysupersecretcode",
+    store,
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: {
